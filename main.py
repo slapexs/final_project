@@ -33,11 +33,19 @@ for detail in text:
 
 # sample
 tfidf_vectorizer = fnd_tfidf.create_tfidfvectorizer()
-tfidf_vector= tfidf_vectorizer.fit_transform(docs[10:106])
+tfidf_vector= tfidf_vectorizer.fit_transform(docs[100:106])
 tfidf_array = np.array(tfidf_vector.todense())
 
+# Train with all docs
+tfidf_vector2 = tfidf_vectorizer.fit_transform(docs)
+tfidf_array2 = np.array(tfidf_vector2.todense())
+
+
+
 #แปลงเป็น DataFrame เพื่อง่ายแก่การอ่าน
-df1 = pd.DataFrame(tfidf_array,columns=tfidf_vectorizer.get_feature_names())
+# df1 = pd.DataFrame(tfidf_array,columns=tfidf_vectorizer.get_feature_names())
+df2 = pd.DataFrame(tfidf_array2, columns=tfidf_vectorizer.get_feature_names())
 
 # View top 10 ifidf score
-print(df1.apply(lambda s: s.nlargest(10).index.tolist(), axis=1).ravel())
+# print(df1.apply(lambda s: s.nlargest(10).index.tolist(), axis=1).ravel())
+print(df2.iloc[10:106, :].apply(lambda s: s.nlargest(10).index.tolist(), axis=1).ravel())
