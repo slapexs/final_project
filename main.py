@@ -1,5 +1,6 @@
 from findtfidf import Findtfidf
 import pandas as pd
+import numpy as np
 
 sample = './data_csv/combine_company.csv'
 df = pd.read_csv(sample)
@@ -29,4 +30,12 @@ for detail in text:
     doc = list(filter(lambda word: (word != ''), doc))
     docs.append(doc)
 
-print(docs)
+
+# sample
+tfidf_vectorizer = fnd_tfidf.create_tfidfvectorizer()
+tfidf_vector= tfidf_vectorizer.fit_transform(docs[100:106])
+tfidf_array = np.array(tfidf_vector.todense())
+
+#แปลงเป็น DataFrame เพื่อง่ายแก่การอ่าน
+df1 = pd.DataFrame(tfidf_array,columns=tfidf_vectorizer.get_feature_names())
+print(df1)
