@@ -31,7 +31,7 @@ class Findtfidf:
         # Change upper to lower
         self.removal_word = self.removal_word.lower()
         # Clean stop word
-        if self.removal_word in self.stop_word:
+        if (self.removal_word in self.stop_word) or self.removal_word.isdigit():
             return ""
         else:
             return self.removal_word
