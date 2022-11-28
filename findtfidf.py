@@ -4,6 +4,8 @@ import numpy as np
 import string
 from pythainlp.tokenize import word_tokenize
 from pythainlp.corpus import thai_stopwords
+from string import punctuation
+import re
 
 # TF-IDF
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -14,12 +16,14 @@ class Findtfidf:
     
     # Cut string
     def cut_string(self, text):
-        self.text = text
+        self.regex_pat = f'[{punctuation}]'
+        self.clean_split = re.sub(self.regex_pat, ' ', text)
         self.token = word_tokenize(
-            text=self.text,
+            text=self.clean_split,
             engine='newmm',
             keep_whitespace=False
         )
+        
 
         return self.token
 
