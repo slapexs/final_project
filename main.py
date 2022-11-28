@@ -1,6 +1,7 @@
 from findtfidf import Findtfidf
 import pandas as pd
 import numpy as np
+from pythainlp.corpus import thai_stopwords
 
 sample = './data_csv/combine_company.csv'
 df = pd.read_csv(sample)
@@ -25,9 +26,12 @@ for i in range(len(df)):
 
 # Clean stop word
 docs = []
+stop_word_obj = thai_stopwords()
+sets_stopword = [stop_word_obj]
+list_stopword = [list(i) for i in sets_stopword]
 for detail in text:
     doc = list(map(fnd_tfidf.perform_removal, detail))
-    doc = list(filter(lambda word: (word != ''), doc))
+    doc = list(filter(lambda word: (word not in list_stopword and word != ''), doc))
     docs.append(doc)
 
 
