@@ -8,6 +8,11 @@
 ![Sample 1](https://img.shields.io/badge/Sample-1-red)
 ![sample1_img](./screenshort/sample_tfidf.png)
 
+## ทดลองทำ Text clustering
+
+นำผลลัพธ์การทดลองที่หาค่า TF-IDFมาทำClusterจำนวน 3 กลุ่ม
+![text_clustering](./screenshort/text_clustering.png)
+
 ## License
 
 MIT
