@@ -8,24 +8,32 @@
 ![Sample 1](https://img.shields.io/badge/Sample-1-red)
 ![sample1_img](./screenshort/sample_tfidf.png)
 
-## ทดลองทำ Text clustering
+## Text clustering
 
-นำผลลัพธ์การทดลองที่หาค่า TF-IDF มาทำ Cluster จำนวน 4 กลุ่ม
+นำผลลัพธ์การทดลองที่หาค่า TF-IDF มาทำ Cluster จำนวน 10 กลุ่ม
 
 ![text_clustering](./screenshort/text_clustering.png)
 
 ## ตัวอย่างแสดงประเภทธุรกิจของบริษัท
 
-> 🚨 Category ดังกล่าวเป็นเพียงตัวอย่างเท่านั้นยังไม่ได้ปรับปรุงให้ตรงกับข้อมูลมากที่สุด
+> Tune cluster ไปประมาณนึงแล้วแต่ยังไม่แม่น 100% และเพิ่มเป็น 10 clusters
+
+> - หมายถึงความแม่นยำต่ำยังมีข้อมูลหลายๆ อย่างปนอยู่
 
 **Category**
 
-| ID  | Name                    |
-| --- | ----------------------- |
-| 0   | Big data                |
-| 1   | Web development         |
-| 2   | Artificial Intelligence |
-| 3   | Internet of Thing       |
+| ID  | Name                              |
+| --- | --------------------------------- |
+| 0   | ERP Solution / Accounting         |
+| 1   | Designer / Multimedia             |
+| 2   | IT / Infrastructure               |
+| 3   | Hardware / Cloud                  |
+| 4   | Software Development              |
+| 5   | Biometrics                        |
+| 6   | \*AI / IT / VR / Digital solution |
+| 7   | Website                           |
+| 8   | Online Platform                   |
+| 9   | Digital Marketing / SEO           |
 
 ![company category](./screenshort/sample_company_category.png)
 
