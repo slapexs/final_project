@@ -3,21 +3,21 @@ import ast
 import pandas as pd
 from pythainlp.tokenize import word_tokenize
 
-f = open('./accuracy/manual.json')
+f = open('./file_test_accuracy/manual.json')
 manual = json.load(f)
 f.close()
 
 '''Pythainlp'''
 # newmm
-newmm = './accuracy/newmm_df.csv'
+newmm = './file_test_accuracy/newmm_df.csv'
 df_newmm = pd.read_csv(newmm)
 
 # deepcut
-deepcut = './accuracy/deepcut_df.csv'
+deepcut = './file_test_accuracy/deepcut_df.csv'
 df_deepcut = pd.read_csv(deepcut)
 
 # longest
-longest = './accuracy/longest_df.csv'
+longest = './file_test_accuracy/longest_df.csv'
 df_longest = pd.read_csv(longest)
 
 '''
