@@ -126,3 +126,11 @@ centroids = kmeans.cluster_centers_
 plt.scatter(centroids[:,0], centroids[:,1], marker='x', c='red')
 # plt.show()
 plt.savefig(f"./screenshort/{k}_cluster.png")
+
+
+'''
+    Save data
+'''
+from savedata import Savedata
+save_obj = Savedata(df, clusters.tolist())
+save_obj.save_to_csv(path='./document', filename='clustered_company', index=False)
