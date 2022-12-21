@@ -4,7 +4,7 @@ from pythainlp.tokenize import word_tokenize
 import string
 
 file = './data_csv/allcompany.csv'
-spx_char = ['”', '-', '),', '\"', '…']
+spx_char = ['”', '-', '),', '\"', '…', '๗', '​', '​​', '​“', '‎', '–', '‘', '’', '“', '•', '™', '≥']
 
 df = pd.read_csv(file)
 new_column_name = [
