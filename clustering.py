@@ -15,7 +15,7 @@ th_stopword = list(thai_stopwords())
 eng_stopword = stopwords.words('english')
 list_company_detail = []
 th_number = ['๑','๒','๓','๔','๕','๖','๗','๘','๙','๐']
-spx_char = ['”', '-', '),', '\"', '…', '​', '​​', '​“', '‎', '–', '‘', '’', '“', '•', '™', '≥']
+spx_char = ['”', '-', '),', '\"', '…', '​', '​​', '​“', '‎', '–', '‘', '’', '“', '•', '™', '≥', '\n', '\t', '!', 'aaa']
 
 new_column_name = [
     'short_company',
@@ -112,17 +112,17 @@ clusters = kmeans.labels_
 '''
 df_tfidf['cluster'] = clusters
 
-# # set image size
+# set image size
 plt.figure(figsize=(12, 8))
-# # set a title
+# set a title
 plt.title("Group of companies", fontdict={"fontsize": 18})
-# # set axes names
+# set axes names
 plt.xlabel("X", fontdict={"fontsize": 16})
 plt.ylabel("Y", fontdict={"fontsize": 16})
-# # create scatter plot with seaborn, where hue is the class used to group the data
+# create scatter plot with seaborn, where hue is the class used to group the data
 plt.scatter(x_value, y_value, c=clusters, cmap="Set2")
 centroids = kmeans.cluster_centers_
-# # centroids
+# centroids
 plt.scatter(centroids[:,0], centroids[:,1], marker='x', c='red')
 # plt.show()
 plt.savefig(f"./screenshort/{k}_cluster.png")
