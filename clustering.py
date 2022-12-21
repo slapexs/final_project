@@ -6,8 +6,9 @@ import string
 import nltk
 # nltk.download('stopwords')
 from nltk.corpus import stopwords
+import matplotlib.pyplot as plt
 
-data = './data_csv/data_cleaned.csv'
+data = './data_csv/combine_company.csv'
 df = pd.read_csv(data)
 
 th_stopword = list(thai_stopwords())
@@ -16,6 +17,27 @@ list_company_detail = []
 th_number = ['๑','๒','๓','๔','๕','๖','๗','๘','๙','๐']
 spx_char = ['”', '-', '),', '\"', '…', '​', '​​', '​“', '‎', '–', '‘', '’', '“', '•', '™', '≥']
 
+new_column_name = [
+    'short_company',
+    'th_company_name',
+    'eng_company_name',
+    'type_business',
+    'type_technology',
+    'product',
+    'type_innovation',
+    'detail',
+    'owner',
+    'province_base',
+    'address',
+    'phone_number',
+    'email',
+    'website',
+    'note',
+    'source'
+]
+
+# Rename columns
+df.columns = new_column_name
 
 def clean_string(detail:list) -> list:
     temp_clean = []
@@ -32,7 +54,7 @@ def clean_stopword(token:list) -> list:
     return temp
 
 for i in range(len(df)):
-    sample = clean_string(str(df.iloc[i]['รายละเอียดธุรกิจ']).lower())
+    sample = clean_string(str(df.iloc[i]['detail']).lower())
     text_cleaned = clean_stopword(word_tokenize(sample, None, 'newmm', False))
     list_company_detail.append(text_cleaned)
 
@@ -80,7 +102,7 @@ df_tfidf['x_value'] = x_value
 df_tfidf['y_value'] = y_value
 
 k = 8
-kmeans = KMeans(n_clusters=k)
+kmeans = KMeans(n_clusters=k, random_state=1)
 # # Fit model
 kmeans.fit(df_tfidf[['x_value', 'y_value']])
 clusters = kmeans.labels_
@@ -90,10 +112,8 @@ clusters = kmeans.labels_
 '''
 df_tfidf['cluster'] = clusters
 
-
-import matplotlib.pyplot as plt
 # # set image size
-# plt.figure(figsize=(10, 5))
+plt.figure(figsize=(12, 8))
 # # set a title
 plt.title("Group of companies", fontdict={"fontsize": 18})
 # # set axes names
