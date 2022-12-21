@@ -14,15 +14,15 @@ th_stopword = list(thai_stopwords())
 eng_stopword = stopwords.words('english')
 list_company_detail = []
 th_number = ['๑','๒','๓','๔','๕','๖','๗','๘','๙','๐']
+spx_char = ['”', '-', '),', '\"', '…', '​', '​​', '​“', '‎', '–', '‘', '’', '“', '•', '™', '≥']
 
-def clean_string(text:str) -> str:
-    clean_token = text
-    for pair in (('\n', ''), ('\t', ''), ('!', '')):
-        clean_token =clean_token.replace(*pair)
 
-    clean_token = clean_token.translate(str.maketrans('','',string.punctuation))
-    clean_token = str(clean_token).translate(str.maketrans('','',string.digits))
-    return clean_token
+def clean_string(detail:list) -> list:
+    temp_clean = []
+    for i in detail:
+        if i not in string.punctuation and i not in string.digits and i not in spx_char and i not in th_number:
+            temp_clean.append(i.lower())
+    return ''.join(temp_clean)
 
 def clean_stopword(token:list) -> list:
     temp = []
