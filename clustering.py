@@ -8,7 +8,7 @@ import nltk
 from nltk.corpus import stopwords
 import matplotlib.pyplot as plt
 
-data = './data_csv/combine_company.csv'
+data = './data_csv/editword_company.csv'
 df = pd.read_csv(data)
 
 th_stopword = list(thai_stopwords())
@@ -113,9 +113,9 @@ clusters = kmeans.labels_
 df_tfidf['cluster'] = clusters
 
 # set image size
-plt.figure(figsize=(12, 8))
+plt.figure(figsize=(12, 6))
 # set a title
-plt.title("Group of companies", fontdict={"fontsize": 18})
+plt.title("Group of companies (edit word)", fontdict={"fontsize": 18})
 # set axes names
 plt.xlabel("X", fontdict={"fontsize": 16})
 plt.ylabel("Y", fontdict={"fontsize": 16})
@@ -123,9 +123,9 @@ plt.ylabel("Y", fontdict={"fontsize": 16})
 plt.scatter(x_value, y_value, c=clusters, cmap="Set2")
 centroids = kmeans.cluster_centers_
 # centroids
-plt.scatter(centroids[:,0], centroids[:,1], marker='x', c='red')
+plt.scatter(centroids[:,0], centroids[:,1], marker='x', c='black')
 # plt.show()
-plt.savefig(f"./screenshort/{k}_cluster.png")
+plt.savefig(f"./screenshort/{k}_cluster_editword.png")
 
 
 '''
@@ -133,4 +133,4 @@ plt.savefig(f"./screenshort/{k}_cluster.png")
 '''
 from savedata import Savedata
 save_obj = Savedata(df, clusters.tolist())
-save_obj.save_to_csv(path='./document', filename='clustered_company', index=False)
+save_obj.save_to_csv(path='./document', filename='editword_clustered_company', index=False)
