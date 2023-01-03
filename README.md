@@ -10,14 +10,14 @@
 
 | ID  | Name             |
 | --- | ---------------- |
-| 0   | AI               |
-| 1   | Data             |
-| 2   | IT               |
-| 3   | Network          |
-| 4   | Online marketing |
+| 0   | Hardware         |
+| 1   | AI               |
+| 2   | Online marketing |
+| 3   | IT               |
+| 4   | UX/UI design     |
 | 5   | Other            |
-| 6   | Software         |
-| 7   | UX/UI designer   |
+| 6   | Data             |
+| 7   | Software         |
 
 ### ตัวอย่างการจัดกลุ่มข้อมูลที่ข้อมูลแก้ไขคำผิดเช่น แพลทฟอร์ม => แพลตฟอร์ม
 
