@@ -3,7 +3,8 @@ import Image from "next/image"
 import { Prompt } from "@next/font/google"
 import styles from "../styles/Home.module.css"
 
-const fontPrompt = Prompt({ weight: "400", subsets: ["thai", "latin"] })
+// Components
+import Navbar from "../components/Navbar"
 
 export default function Home() {
 	return (
@@ -20,7 +21,9 @@ export default function Home() {
 				<link rel="icon" href="/houseparty.png" />
 			</Head>
 
-			<h1 className={fontPrompt.className}>สวัสดี</h1>
+			<main>
+				<Navbar />
+			</main>
 		</>
 	)
 }
