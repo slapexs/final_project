@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline"
 export default function Searchbox() {
 	return (
 		<>
-			<div className="py-24 sm:py-32 lg:py-40">
+			<div className="py-24 sm:py-32 lg:py-24">
 				<div className="mx-auto max-w-7xl px-6 lg:px-6">
 					<div className="text-center">
 						<h1 className="text-4xl font-bold">ค้นหาสถานประกอบการ</h1>
