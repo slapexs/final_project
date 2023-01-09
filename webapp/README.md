@@ -13,4 +13,4 @@ npm run dev
 yarn dev
 ```
 
-หลักจากนั้นเปิด Browser ไปที่ [localhost:3000](localhost:3000)
+หลักจากนั้นเปิด Browser ไปที่ [localhost:3000](http://localhost:3000)
