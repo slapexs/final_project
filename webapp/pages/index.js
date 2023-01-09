@@ -6,6 +6,7 @@ import styles from "../styles/Home.module.css"
 // Components
 import Navbar from "../components/Navbar"
 import HeroSection from "../components/HeroSection"
+import AdviceCompany from "../components/AdviceCompany"
 
 export default function Home() {
 	return (
@@ -26,6 +27,8 @@ export default function Home() {
 				<Navbar />
 
 				<HeroSection />
+
+				<AdviceCompany />
 			</main>
 		</>
 	)
