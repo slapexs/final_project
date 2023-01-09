@@ -23,7 +23,7 @@ export default function Searchbox() {
 							placeholder="สนใจฝึกงานด้านไหน?"
 						/>
 
-						<button className="px-4 py-2 inline-block bg-orange-400 rounded-lg text-white hover:bg-orange-700">
+						<button className="px-4 py-2 inline-block bg-orange-400 rounded-lg text-white hover:bg-orange-500">
 							ค้นหา <MagnifyingGlassIcon className="w-5 inline" />
 						</button>
 					</div>
