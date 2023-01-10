@@ -7,6 +7,7 @@ import styles from "../styles/Home.module.css"
 import Navbar from "../components/Navbar"
 import HeroSection from "../components/HeroSection"
 import AdviceCompany from "../components/AdviceCompany"
+import Footer from "../components/Footer"
 
 export default function Home() {
 	return (
@@ -29,6 +30,8 @@ export default function Home() {
 				<HeroSection />
 
 				<AdviceCompany />
+
+				<Footer />
 			</main>
 		</>
 	)
