@@ -21,7 +21,7 @@
 
 ### ตัวอย่างการจัดกลุ่มข้อมูลที่ข้อมูลแก้ไขคำผิดเช่น แพลทฟอร์ม => แพลตฟอร์ม
 
-![text_clustering](./screenshort/8_cluster_editword.png)
+![text_clustering](./screenshort/8_cluster.png)
 
 ### ตัวอย่างการจัดกลุ่มข้อมูลที่ข้อมูลไม่ได้แก้ไขคำผิด
 
