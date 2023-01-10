@@ -1,9 +1,10 @@
 ## Web application สำหรับค้นหาบริษัทจากข้อมูลที่จัดกลุ่มไว้
 
-พัฒนาด้วย [Next,js](https://nextjs.org/)
+พัฒนาด้วย [Next.js](https://nextjs.org/)
 
 **Update UI หลักๆ**
-![Update1](./public/screenshort/update1.png)
+![UI](./public/screenshort/update2.png)
+![UI](./public/screenshort/update3.png)
 
 ## ทดลองใช้งานในโหมดพัฒนา
 

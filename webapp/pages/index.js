@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Image from "next/image"
-import { Prompt } from "@next/font/google"
+
 import styles from "../styles/Home.module.css"
 
 // Components
@@ -8,6 +8,10 @@ import Navbar from "../components/Navbar"
 import HeroSection from "../components/HeroSection"
 import AdviceCompany from "../components/AdviceCompany"
 import Footer from "../components/Footer"
+
+import { Prompt } from "@next/font/google"
+
+const fontPrompt = Prompt({ weight: "400", subsets: ["thai"] })
 
 export default function Home() {
 	return (
@@ -24,7 +28,7 @@ export default function Home() {
 				<link rel="icon" href="/houseparty.png" />
 			</Head>
 
-			<main>
+			<main className={fontPrompt.className}>
 				<Navbar />
 
 				<HeroSection />

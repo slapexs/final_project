@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react"
+import {
+	MapPinIcon,
+	AtSymbolIcon,
+	PhoneIcon,
+} from "@heroicons/react/24/outline"
 
 const AdviceCompany = () => {
 	const [users, setUser] = useState([])
@@ -9,7 +14,6 @@ const AdviceCompany = () => {
 			const data = await res.json()
 			setUser(data)
 		}
-
 		getUser()
 	}, [])
 
@@ -28,12 +32,14 @@ const AdviceCompany = () => {
 							{users.map((user) => (
 								<div className="" key={user.id}>
 									<div
-										className="bg-white shadow-md rounded-md px-4 py-4 h-full relative"
+										className="bg-white shadow-md hover:shadow-lg rounded-md px-4 py-4 h-full relative"
 										id="card"
 									>
 										<h1 className="text-2xl">{user.company.name}</h1>
-										<div className="text-gray-500" id="card-body">
-											<small>
+										<div className="text-gray-500 text-sm" id="card-body">
+											<small className="flex items-center">
+												<MapPinIcon className="w-3 mr-2" />
+
 												{user.address.street +
 													" " +
 													user.address.suite +
@@ -44,17 +50,29 @@ const AdviceCompany = () => {
 											</small>
 
 											<p>
-												<small>{user.email}</small>
+												<small className="flex items-center">
+													<AtSymbolIcon className="w-3 mr-2" />
+													{user.email}
+												</small>
 											</p>
 											<p>
-												<small>{user.phone}</small>
+												<small className="flex items-center">
+													<PhoneIcon className="w-3 mr-2" />
+													{user.phone}
+												</small>
 											</p>
 										</div>
 
 										<div id="card-footer" className="mt-5">
-											<span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
-												Online marketing
-											</span>
+											{user.name.length % 2 == 0 ? (
+												<span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+													Online marketing
+												</span>
+											) : (
+												<span class="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+													Network
+												</span>
+											)}
 										</div>
 									</div>
 								</div>

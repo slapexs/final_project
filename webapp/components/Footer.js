@@ -4,7 +4,7 @@ const Footer = () => {
 	return (
 		<>
 			<hr />
-			<div className="bg-white sm:py-20 lg:20 justify-center flex">
+			<div className="sm:py-20 lg:20 justify-center flex">
 				<div className="w-3/4">
 					<div className="flex flex-row items-center justify-between">
 						<div className="flex items-center">
