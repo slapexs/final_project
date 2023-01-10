@@ -4,28 +4,33 @@
 
 ## Group of companies
 
-จัดกลุ่มใหม่จำนวน 8 กลุ่มอ้างอิงประเภทของงานไอทีจากเว็บไซต์ [Jobsdb](https://th.jobsdb.com/th/th/jobs/งานไอที/1)
+จัดกลุ่มใหม่จำนวน 7 กลุ่มอ้างอิงประเภทของงานไอทีจากเว็บไซต์ [Jobsdb](https://th.jobsdb.com/th/th/jobs/งานไอที/1)
 
 ## ประเภทงานด้านไอที
 
 | ID  | Name             |
 | --- | ---------------- |
-| 0   | Hardware         |
-| 1   | AI               |
+| 0   | Data             |
+| 1   | Other            |
 | 2   | Online marketing |
-| 3   | IT               |
-| 4   | UX/UI design     |
-| 5   | Other            |
-| 6   | Data             |
-| 7   | Software         |
+| 3   | Software         |
+| 4   | Hardware         |
+| 5   | Network          |
+| 6   | IT               |
 
 ### ตัวอย่างการจัดกลุ่มข้อมูลที่ข้อมูลแก้ไขคำผิดเช่น แพลทฟอร์ม => แพลตฟอร์ม
 
-![text_clustering](./screenshort/8_cluster.png)
+## 8 กลุ่ม
 
-### ตัวอย่างการจัดกลุ่มข้อมูลที่ข้อมูลไม่ได้แก้ไขคำผิด
+![8clusters](./screenshort/8_cluster.png)
 
-![clustering_uneditword](./screenshort/8_cluster_uneditword.png)
+## 7 กลุ่ม
+
+![7clusters](./screenshort/7_cluster.png)
+
+## 6 กลุ่ม
+
+![6clusters](./screenshort/6_cluster.png)
 
 ---
 
