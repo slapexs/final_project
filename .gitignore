@@ -222,3 +222,4 @@ $RECYCLE.BIN/
 # Folder data
 clean_data/
 data_tfidf/
+webapp/
