@@ -101,7 +101,7 @@ y_value = pca_vecs[:, 1]
 df_tfidf['x_value'] = x_value
 df_tfidf['y_value'] = y_value
 
-k = 8
+k = 7
 kmeans = KMeans(n_clusters=k, random_state=1)
 # # Fit model
 kmeans.fit(df_tfidf[['x_value', 'y_value']])
