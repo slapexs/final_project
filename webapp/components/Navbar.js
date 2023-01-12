@@ -5,6 +5,7 @@ import {
 	XMarkIcon,
 	ChevronDownIcon,
 } from "@heroicons/react/24/outline"
+import Image from "next/image"
 
 const navigation = [
 	{
@@ -48,15 +49,19 @@ export default function Navbar() {
 							</div>
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 								<div className="flex flex-shrink-0 items-center">
-									<img
-										className="block h-8 w-auto lg:hidden"
-										src="./houseparty.png"
-										alt="Intern assistant"
+									<Image
+										src="/houseparty.png"
+										width={48}
+										height={48}
+										alt="logo"
+										className="block lg:hidden"
 									/>
-									<img
-										className="hidden h-8 w-auto lg:block"
-										src="./houseparty.png"
-										alt="Intern assistant"
+									<Image
+										src="/houseparty.png"
+										width={48}
+										height={48}
+										alt="logo"
+										className="hidden lg:block"
 									/>
 									<strong className="font-bold">Intern assistant</strong>
 								</div>

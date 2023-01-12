@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 const Footer = () => {
 	return (
@@ -8,7 +9,8 @@ const Footer = () => {
 				<div className="w-3/4">
 					<div className="flex flex-row items-center justify-between">
 						<div className="flex items-center">
-							<img src="./houseparty.png" className="w-12" />
+							<Image src="/houseparty.png" width="64" height="64" alt="logo" />
+
 							<h1 className="font-bold">
 								Intern <br /> assistant
 							</h1>
