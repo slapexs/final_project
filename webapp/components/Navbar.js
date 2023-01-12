@@ -6,23 +6,28 @@ import {
 	ChevronDownIcon,
 } from "@heroicons/react/24/outline"
 import Image from "next/image"
+import Link from "next/link"
 
 const navigation = [
 	{
 		name: "สถานประกอบการทั้งหมด",
-		href: "#",
+		href: "/company/all",
 		current: false,
 	},
 ]
 
 const cocmpany_category = [
-	{ name: "Data", href: "#", current: false },
-	{ name: "Hardware", href: "#", current: false },
-	{ name: "IT", href: "#", current: false },
-	{ name: "Network", href: "#", current: false },
-	{ name: "Online marketing", href: "#", current: false },
-	{ name: "Other", href: "#", current: false },
-	{ name: "Software", href: "#", current: false },
+	{ name: "Data", href: "/company/data", current: false },
+	{ name: "Hardware", href: "/company/hardware", current: false },
+	{ name: "IT", href: "/company/it", current: false },
+	{ name: "Network", href: "/company/network", current: false },
+	{
+		name: "Online marketing",
+		href: "/company/onlinemarketing",
+		current: false,
+	},
+	{ name: "Other", href: "/company/other", current: false },
+	{ name: "Software", href: "/company/software", current: false },
 ]
 
 function classNames(...classes) {
@@ -48,29 +53,31 @@ export default function Navbar() {
 								</Disclosure.Button>
 							</div>
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-								<div className="flex flex-shrink-0 items-center">
-									<Image
-										src="/houseparty.png"
-										width={48}
-										height={48}
-										alt="logo"
-										className="block lg:hidden"
-									/>
-									<Image
-										src="/houseparty.png"
-										width={48}
-										height={48}
-										alt="logo"
-										className="hidden lg:block"
-									/>
-									<strong className="font-bold">Intern assistant</strong>
+								<div className="">
+									<Link href="/" className="flex flex-shrink-0 items-center">
+										<Image
+											src="/houseparty.png"
+											width={48}
+											height={48}
+											alt="logo"
+											className="block lg:hidden"
+										/>
+										<Image
+											src="/houseparty.png"
+											width={48}
+											height={48}
+											alt="logo"
+											className="hidden lg:block"
+										/>
+										<strong className="font-bold">Intern assistant</strong>
+									</Link>
 								</div>
 								<div className="hidden sm:ml-6 sm:block">
-									<div className="flex space-x-4  absolute right-0">
+									<div className="flex space-x-4 mt-2 absolute right-0">
 										{navigation.map((item) => (
-											<a
-												key={item.name}
+											<Link
 												href={item.href}
+												key={item.name}
 												className={classNames(
 													item.current
 														? "bg-amber-600 text-white"
@@ -80,7 +87,7 @@ export default function Navbar() {
 												aria-current={item.current ? "page" : undefined}
 											>
 												{item.name}
-											</a>
+											</Link>
 										))}
 
 										{/* Company category */}
@@ -109,7 +116,7 @@ export default function Navbar() {
 														{cocmpany_category.map((elem, index) => (
 															<Menu.Item key={index}>
 																{({ active }) => (
-																	<a
+																	<Link
 																		href={elem.href}
 																		className={classNames(
 																			elem.current
@@ -119,7 +126,7 @@ export default function Navbar() {
 																		)}
 																	>
 																		{elem.name}
-																	</a>
+																	</Link>
 																)}
 															</Menu.Item>
 														))}
@@ -137,9 +144,7 @@ export default function Navbar() {
 					<Disclosure.Panel className="sm:hidden">
 						<div className="space-y-1 px-2 pt-2 pb-3">
 							{navigation.map((item) => (
-								<Disclosure.Button
-									key={item.name}
-									as="a"
+								<Link
 									href={item.href}
 									className={classNames(
 										item.current
@@ -148,9 +153,10 @@ export default function Navbar() {
 										"block px-3 py-2 rounded-md text-base font-medium"
 									)}
 									aria-current={item.current ? "page" : undefined}
+									key={item.name}
 								>
-									{item.name}
-								</Disclosure.Button>
+									<Disclosure.Button>{item.name}</Disclosure.Button>
+								</Link>
 							))}
 						</div>
 
@@ -181,7 +187,7 @@ export default function Navbar() {
 											{cocmpany_category.map((elem, index) => (
 												<Menu.Item key={index}>
 													{({ active }) => (
-														<a
+														<Link
 															href={elem.href}
 															className={classNames(
 																elem.current
@@ -191,7 +197,7 @@ export default function Navbar() {
 															)}
 														>
 															{elem.name}
-														</a>
+														</Link>
 													)}
 												</Menu.Item>
 											))}
