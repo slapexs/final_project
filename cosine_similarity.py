@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
 from pythainlp.tokenize import word_tokenize
 from pythainlp.corpus import thai_stopwords
 import nltk
@@ -34,10 +33,9 @@ def clean_stopword(token:list) -> list:
             temp.append(i)
     return temp
 
-
-
-cluster = 2
-search_keyword = clean_stopword(word_tokenize(clean_string(str('ออกแบบเว็บไซต์ด้วย react js ทำเกี่ยวกับการเขียนเว็บ การตลาดออนไลน์ด้วย และ SEO').lower()), None, 'newmm', False))
+cluster = 6
+keyword = 'ออกแบบเว็บไซต์ด้วย react js ทำเกี่ยวกับการเขียนเว็บ การตลาดออนไลน์ด้วย และ SEO'
+search_keyword = clean_stopword(word_tokenize(clean_string(str(keyword).lower()), None, 'newmm', False))
 
 documents = []
 for i in range(len(df)):
@@ -45,7 +43,6 @@ for i in range(len(df)):
         sample = clean_string(str(df.iloc[i]['detail']).lower())
         text_cleaned = clean_stopword(word_tokenize(sample, None, 'newmm', False))
         documents.append(text_cleaned)
-
 
 def fake_tokenize(word):
     return word
@@ -69,8 +66,6 @@ ans_search = []
 for k in df_tfidf_search.iloc[0]:
     ans_search.append(k)
     ans_search.sort(reverse=True)
-
-
 
 '''
     TFI-DF cluster document
