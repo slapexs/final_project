@@ -32,6 +32,18 @@
 
 ![6clusters](./screenshort/6_cluster.png)
 
+## Cosine similary
+
+ผมใช้วิธีที่จะหาว่าคำตอบไหนจะเป็นคำตอบที่ดีที่สุดของการค้นหาด้วยวิธี Cosine similarity [อ้างอิง](https://www.softnix.co.th/2019/05/29/similarity-ความเหมือนที่แตกต่าง/)
+
+**ตัวอย่างผลลัพธ์**
+
+keyword: ออกแบบเว็บไซต์ด้วย react js ทำเกี่ยวกับการเขียนเว็บ การตลาดออนไลน์ด้วย และ SEO
+![cluster2](./screenshort/cosine1.png)
+![cluster3](./screenshort/cosine2.png)
+
+จะเห็นว่าค่า Cosine similarity ของ cluster 2 นั้นมีมากกว่าก็จะคืนค่าผลลัพธ์บริษัทที่อยู่ใน cluster ที่ 2
+
 ---
 
 ## License
