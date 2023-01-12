@@ -11,23 +11,23 @@ import Link from "next/link"
 const navigation = [
 	{
 		name: "สถานประกอบการทั้งหมด",
-		href: "/company/all",
+		href: "/company/category/all",
 		current: false,
 	},
 ]
 
 const cocmpany_category = [
-	{ name: "Data", href: "/company/data", current: false },
-	{ name: "Hardware", href: "/company/hardware", current: false },
-	{ name: "IT", href: "/company/it", current: false },
-	{ name: "Network", href: "/company/network", current: false },
+	{ name: "Data", href: "/company/category/data", current: false },
+	{ name: "Hardware", href: "/company/category/hardware", current: false },
+	{ name: "IT", href: "/company/category/it", current: false },
+	{ name: "Network", href: "/company/category/network", current: false },
 	{
 		name: "Online marketing",
-		href: "/company/onlinemarketing",
+		href: "/company/category/onlinemarketing",
 		current: false,
 	},
-	{ name: "Other", href: "/company/other", current: false },
-	{ name: "Software", href: "/company/software", current: false },
+	{ name: "Other", href: "/company/category/other", current: false },
+	{ name: "Software", href: "/company/category/software", current: false },
 ]
 
 function classNames(...classes) {
