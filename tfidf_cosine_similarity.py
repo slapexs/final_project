@@ -49,10 +49,3 @@ class Calculate_cosinesim:
 
     def response_cosine(self):
         return [self.calculate_cosine(i)[0][1] for i in self.cluster_wordseg()]
-
-
-obj = Calculate_cosinesim(keyword, 7, df)
-cosine_values = obj.response_cosine()
-print(cosine_values)
-print(f'max cosine similarity: {max(cosine_values)}')
-print(f'cluster: {cosine_values.index(max(cosine_values))}')
