@@ -4,31 +4,26 @@ import pandas as pd
 from pythainlp.tokenize import word_tokenize
 from pythainlp.corpus import thai_stopwords
 
-df = pd.read_csv('./document/clustered_company.csv')
 th_stopword = list(thai_stopwords())
-
-keyword = 'บริการลักษณะ Digital Solution (Marketing)'
+th_number = ['๑','๒','๓','๔','๕','๖','๗','๘','๙','๐']
+spx_char = ['”', '-', '),', '\"', '…', '​', '​​', '​“', '–', '‘', '’', '“', '•', '™', '≥', '\n', '\t', '!', 'aaa']
 
 class Calculate_cosinesim:
-    def __init__(self, keyword, amount_cluster:int, df) -> None:
+    def __init__(self, keyword, amount_cluster:int, df):
         self.keyword = keyword
         self.cluster = amount_cluster
         self.df = df
     
     # Filter detail by cluster
     def filter_detail(self):
-        self.cluster_detail = []
-        for c in range(self.cluster):
-            temp = []
-            for i in range(len(self.df)):
-                if self.df.iloc[i]['cluster'] == c:
-                    temp.append(self.df.iloc[i]['detail'])
-            self.cluster_detail.append(temp)
-        return self.cluster_detail
+        self.cluster_detail1 = [[] for k in range(self.cluster)]
+        for i in range(len(self.df)):
+            self.cluster_detail1[int(self.df.iloc[i]['cluster'])].append(self.df.iloc[i]['detail'])
+        return self.cluster_detail1
     
     def segment_and_clean_text(self, text):
         self.words = word_tokenize(text, None, 'newmm', False)
-        self.cleaned_words = [word for word in self.words if word not in th_stopword]
+        self.cleaned_words = [word for word in self.words if word not in th_stopword and word not in th_number and word not in spx_char]
         return "".join(self.cleaned_words)
     
     def cluster_wordseg(self):
