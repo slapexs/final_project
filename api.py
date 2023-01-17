@@ -1,10 +1,20 @@
 from fastapi import FastAPI
 from tfidf_cosine_similarity import Calculate_cosinesim
-import pandas as pd
 from pydantic import BaseModel
+from pymongo import MongoClient
+import pandas as pd
 
-df = pd.read_csv('./document/clustered_company.csv')
+client = MongoClient('mongodb://localhost:27017/')
+filter={}
+project = {'_id': 0}
 
+result = client['final_project']['companies'].find(
+  filter=filter,
+  projection=project,
+)
+
+df_db = pd.DataFrame(list(result))
+cluster = 7
 class Search_body(BaseModel):
     keyword: str
 
@@ -24,7 +34,7 @@ async def search_body(req: Search_body):
         'keyword': req.keyword
     }
 
-    obj = Calculate_cosinesim(data['keyword'], 7, df)
+    obj = Calculate_cosinesim(data['keyword'], cluster, df_db)
     cosine_values = obj.response_cosine()
     list_cosinesim = [v for v in cosine_values]
     return {
