@@ -7,12 +7,12 @@ export default async function handler(req, res) {
 
 	switch (req.method) {
 		case "GET":
-			const allPosts = await db
+			const allCompanies = await db
 				.collection("companies")
 				.find({ cluster: cluster })
 				.sort({ short_company: 1 })
 				.toArray()
-			res.json({ status: 200, data: allPosts })
+			res.json({ status: 200, data: allCompanies })
 			break
 	}
 }
