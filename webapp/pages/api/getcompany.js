@@ -10,6 +10,7 @@ export default async function handler(req, res) {
 			const allPosts = await db
 				.collection("companies")
 				.find({ cluster: cluster })
+				.sort({ short_company: 1 })
 				.toArray()
 			res.json({ status: 200, data: allPosts })
 			break

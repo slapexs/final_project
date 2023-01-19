@@ -2,7 +2,6 @@ import Head from "next/head"
 
 // Components
 import HeroSection from "../components/HeroSection"
-import AdviceCompany from "../components/AdviceCompany"
 
 export default function Home() {
 	return (
@@ -21,8 +20,6 @@ export default function Home() {
 
 			<main>
 				<HeroSection />
-
-				<AdviceCompany />
 			</main>
 		</>
 	)
