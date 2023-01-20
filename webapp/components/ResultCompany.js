@@ -32,11 +32,15 @@ export default function ResultCompany({ cluster, companies }) {
 						<ul>
 							<div className="grid grid-cols-2 gap-4">
 								{companies.map((elem, index) => (
-									<Link href={`/company/${elem["_id"]}`} key={index}>
+									<Link
+										href={`/company/${elem["_id"]}`}
+										target="_blank"
+										key={index}
+									>
 										<li className="border border-gray-300 p-2 shadow-sm flex justify-between hover:shadow-lg rounded">
 											<div>
 												<h1>{elem.th_company_name}</h1>
-												<p className="text-orange-400 text-xs">
+												<p className="text-gray-500 text-xs">
 													{elem.short_company}
 												</p>
 											</div>
