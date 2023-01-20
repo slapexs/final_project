@@ -4,78 +4,112 @@ import {
 	AtSymbolIcon,
 	PhoneIcon,
 } from "@heroicons/react/24/outline"
+import Image from "next/image"
+import Link from "next/link"
 
-const AdviceCompany = () => {
-	const [users, setUser] = useState([])
+const cluster_id = [
+	"Data",
+	"Other",
+	"Online marketing",
+	"Software",
+	"Hardware",
+	"Network",
+	"IT",
+]
+
+const classBadge = [
+	"bg-red-100 text-red-800",
+	"bg-amber-100 text-amber-800",
+	"bg-lime-100 text-lime-800",
+	"bg-teal-100 text-teal-800",
+	"bg-sky-100 text-sky-800",
+	"bg-indigo-100 text-indigo-800",
+	"bg-fuchsia-100 text-fuchsia-800",
+]
+export async function getServerSideProps(context) {
+	return {
+		props: { listCompanies: data },
+	}
+}
+
+const AdviceCompany = ({ listCompanies }) => {
+	console.log(listCompanies)
+	const [listCompany, setListCompany] = useState([])
 
 	useEffect(() => {
-		async function getUser() {
-			const res = await fetch("https://jsonplaceholder.typicode.com/users")
+		async function getListCompany() {
+			const amount = 12
+			const url = `http://localhost:3000/api/randomcompany?amount=${amount}`
+			const res = await fetch(url)
 			const data = await res.json()
-			setUser(data)
+			setListCompany(data.listCompany)
 		}
-		getUser()
+		getListCompany()
 	}, [])
 
 	return (
 		<>
 			<div className="sm:py-32 lg:py-24">
 				<div className="flex-col flex items-center justify-center">
-					<div className="w-3/4 flex items-center flex">
-						<img src="./advice.png" className="w-12" />
+					<div className="w-3/4 flex items-center">
+						<Image src="/advice.png" width={48} height={48} alt="advice logo" />
 						<h1 className="text-2xl">สถานประกอบการ น่าสนใจ</h1>
 					</div>
 
 					<div className="w-3/4 mt-3">
 						{/* Card */}
 						<div className="grid grid-cols-3 gap-4">
-							{users.map((user) => (
-								<div className="" key={user.id}>
-									<div
-										className="bg-white shadow-md hover:shadow-lg rounded-md px-4 py-4 h-full relative"
-										id="card"
-									>
-										<h1 className="text-2xl">{user.company.name}</h1>
-										<div className="text-gray-500 text-sm" id="card-body">
-											<small className="flex items-center">
-												<MapPinIcon className="w-3 mr-2" />
+							{listCompany.map((elem, index) => (
+								<Link
+									key={index}
+									href={`/company/${elem["_id"]}`}
+									target="_blank"
+								>
+									<div className="h-full ">
+										<div
+											className="bg-white shadow-md hover:shadow-lg rounded-md px-4 py-4 relative border border-gray-200"
+											id="card"
+										>
+											<h1 className="text-lg">{elem.th_company_name}</h1>
+											<div
+												className="text-gray-500 text-sm mt-2"
+												id="card-body"
+											>
+												<p>
+													<small className="flex items-start">
+														<MapPinIcon className="mr-2" width={16} />
+														{elem.province_base}
+													</small>
+												</p>
 
-												{user.address.street +
-													" " +
-													user.address.suite +
-													" " +
-													user.address.city +
-													" " +
-													user.address.zipcode}
-											</small>
+												<p>
+													<small className="flex items-center">
+														<AtSymbolIcon className="mr-2" width={16} />
+														{elem.email}
+													</small>
+												</p>
+												<p>
+													<small className="flex items-center">
+														<PhoneIcon className="mr-2" width={16} />
+														{elem.phone_number}
+													</small>
+												</p>
+											</div>
 
-											<p>
-												<small className="flex items-center">
-													<AtSymbolIcon className="w-3 mr-2" />
-													{user.email}
-												</small>
-											</p>
-											<p>
-												<small className="flex items-center">
-													<PhoneIcon className="w-3 mr-2" />
-													{user.phone}
-												</small>
-											</p>
-										</div>
-
-										<div id="card-footer" className="mt-5">
-											{user.name.length % 2 == 0 ? (
-												<span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
-													Online marketing
-												</span>
-											) : (
-												<span className="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
-													Network
-												</span>
-											)}
+											<div id="card-footer" className="mt-5">
+												<p className="mt-2">
+													<span
+														className={`${
+															classBadge[elem.cluster]
+														} text-xs font-medium mr-2 px-2.5 py-0.5 rounded `}
+													>
+														{cluster_id[elem.cluster]}
+													</span>
+												</p>
+											</div>
 										</div>
 									</div>
-								</div>
+								</Link>
 							))}
 						</div>
 					</div>
