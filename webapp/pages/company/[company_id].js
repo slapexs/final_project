@@ -10,6 +10,8 @@ import {
 	CodeBracketIcon,
 } from "@heroicons/react/24/outline"
 
+import Head from "next/head"
+
 const cluster_id = [
 	"Data",
 	"Other",
@@ -47,6 +49,16 @@ const CompanyByID = ({ company }) => {
 
 	return (
 		<>
+			<Head>
+				<title>ข้อมูลบริษัท | {company.th_company_name}</title>
+				<meta
+					name="description"
+					content="ระบบแนะนำบริษัทสำหรับฝึกงานตามความสนวจ ด้วยเทตโนโลยีปัญญาประดิษฐ์ | Recommended System of Internship's Company"
+				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link rel="icon" href="/houseparty.png" />
+			</Head>
+
 			<div className="py-24 sm:py-32 lg:py-24 flex justify-center">
 				{/* Content */}
 				<div className="w-3/4">
