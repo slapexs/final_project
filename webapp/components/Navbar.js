@@ -11,7 +11,7 @@ import Link from "next/link"
 const navigation = [
 	{
 		name: "สถานประกอบการทั้งหมด",
-		href: "/company/category/all",
+		href: "/company/all",
 		current: false,
 	},
 ]
