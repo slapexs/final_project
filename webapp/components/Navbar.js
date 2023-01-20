@@ -17,17 +17,17 @@ const navigation = [
 ]
 
 const cocmpany_category = [
-	{ name: "Data", href: "/company/category/data", current: false },
-	{ name: "Hardware", href: "/company/category/hardware", current: false },
-	{ name: "IT", href: "/company/category/it", current: false },
-	{ name: "Network", href: "/company/category/network", current: false },
+	{ name: "Data", href: "/company/category/0", current: false },
+	{ name: "Hardware", href: "/company/category/4", current: false },
+	{ name: "IT", href: "/company/category/6", current: false },
+	{ name: "Network", href: "/company/category/5", current: false },
 	{
 		name: "Online marketing",
-		href: "/company/category/onlinemarketing",
+		href: "/company/category/2",
 		current: false,
 	},
-	{ name: "Other", href: "/company/category/other", current: false },
-	{ name: "Software", href: "/company/category/software", current: false },
+	{ name: "Other", href: "/company/category/1", current: false },
+	{ name: "Software", href: "/company/category/3", current: false },
 ]
 
 function classNames(...classes) {
