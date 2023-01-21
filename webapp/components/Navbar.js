@@ -16,7 +16,7 @@ const navigation = [
 	},
 ]
 
-const cocmpany_category = [
+const company_category = [
 	{ name: "Data", href: "/company/category/0", current: false },
 	{ name: "Hardware", href: "/company/category/4", current: false },
 	{ name: "IT", href: "/company/category/6", current: false },
@@ -43,7 +43,7 @@ export default function Navbar() {
 						<div className="relative flex h-16 items-center justify-between">
 							<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 								{/* Mobile menu button*/}
-								<Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+								<Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-purple-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
 									<span className="sr-only">Open main menu</span>
 									{open ? (
 										<XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -80,8 +80,8 @@ export default function Navbar() {
 												key={item.name}
 												className={classNames(
 													item.current
-														? "bg-amber-600 text-white"
-														: "text-gray-500 hover:bg-amber-500 hover:text-white",
+														? "bg-purple-600 text-white"
+														: "text-gray-500 hover:bg-purple-500 hover:text-white",
 													"px-3 py-2 rounded-md text-sm font-medium"
 												)}
 												aria-current={item.current ? "page" : undefined}
@@ -93,10 +93,10 @@ export default function Navbar() {
 										{/* Company category */}
 										<Menu as="div" className="relative inline-block text-left">
 											<div>
-												<Menu.Button className="inline-flex w-full justify-center  px-4 py-2 text-sm font-medium text-gray-500 hover:bg-amber-500  hover:text-white rounded-md focus:ring-offset-gray-100">
+												<Menu.Button className="inline-flex w-full justify-center  px-4 py-2 text-sm font-medium text-gray-500 hover:bg-purple-500  hover:text-white rounded-md focus:ring-offset-gray-100">
 													หมวดหมู่สถานประกอบการ
 													<ChevronDownIcon
-														className="-mr-1 ml-2 h-5 w-5"
+														className="mr-1 ml-2 h-5 w-5"
 														aria-hidden="true"
 													/>
 												</Menu.Button>
@@ -113,7 +113,7 @@ export default function Navbar() {
 											>
 												<Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 													<div className="py-1">
-														{cocmpany_category.map((elem, index) => (
+														{company_category.map((elem, index) => (
 															<Menu.Item key={index}>
 																{({ active }) => (
 																	<Link
@@ -122,7 +122,7 @@ export default function Navbar() {
 																			elem.current
 																				? "bg-gray-100 text-gray-900"
 																				: "text-gray-700",
-																			"block px-4 py-2 text-sm hover:bg-amber-200"
+																			"block px-4 py-2 text-sm hover:bg-purple-200"
 																		)}
 																	>
 																		{elem.name}
@@ -148,8 +148,8 @@ export default function Navbar() {
 									href={item.href}
 									className={classNames(
 										item.current
-											? "bg-amber-600 text-white"
-											: "text-gray-500 hover:bg-amber-500 hover:text-white",
+											? "bg-purple-600 text-white"
+											: "text-gray-500 hover:bg-purple-500 hover:text-white",
 										"block px-3 py-2 rounded-md text-base font-medium"
 									)}
 									aria-current={item.current ? "page" : undefined}
@@ -164,7 +164,7 @@ export default function Navbar() {
 							{/* Company category */}
 							<Menu as="div" className="relative inline-block text-left">
 								<div>
-									<Menu.Button className="inline-flex w-full justify-center  px-4 py-2 text-base font-medium text-gray-500 hover:bg-amber-500  hover:text-white rounded-md focus:ring-offset-gray-100">
+									<Menu.Button className="inline-flex w-full justify-center  px-4 py-2 text-base font-medium text-gray-500 hover:bg-purple-500  hover:text-white rounded-md focus:ring-offset-gray-100">
 										หมวดหมู่สถานประกอบการ
 										<ChevronDownIcon
 											className="-mr-1 ml-2 h-5 w-5"
@@ -184,7 +184,7 @@ export default function Navbar() {
 								>
 									<Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 										<div className="py-1">
-											{cocmpany_category.map((elem, index) => (
+											{company_category.map((elem, index) => (
 												<Menu.Item key={index}>
 													{({ active }) => (
 														<Link
@@ -193,7 +193,7 @@ export default function Navbar() {
 																elem.current
 																	? "bg-gray-100 text-gray-900"
 																	: "text-gray-700",
-																"block px-4 py-2 text-sm hover:bg-amber-200"
+																"block px-4 py-2 text-sm hover:bg-purple-200"
 															)}
 														>
 															{elem.name}

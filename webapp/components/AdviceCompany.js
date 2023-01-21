@@ -49,69 +49,66 @@ const AdviceCompany = ({ listCompanies }) => {
 
 	return (
 		<>
-			<div className="sm:py-32 lg:py-24">
-				<div className="flex-col flex items-center justify-center">
-					<div className="w-3/4 flex items-center">
-						<Image src="/advice.png" width={48} height={48} alt="advice logo" />
-						<h1 className="text-2xl">สถานประกอบการ น่าสนใจ</h1>
-					</div>
+			<div className="flex-col flex items-center justify-center">
+				<div className="w-3/4 flex items-center">
+					<Image src="/advice.png" width={30} height={30} alt="advice logo" />
+					<h1 className="text-2xl md:text-3xl font-semibold">
+						สถานประกอบการน่าสนใจ
+					</h1>
+				</div>
 
-					<div className="w-3/4 mt-3">
-						{/* Card */}
-						<div className="grid grid-cols-3 gap-4">
-							{listCompany.map((elem, index) => (
-								<Link
-									key={index}
-									href={`/company/${elem["_id"]}`}
-									target="_blank"
-								>
-									<div className="h-full ">
-										<div
-											className="bg-white shadow-md hover:shadow-lg rounded-md px-4 py-4 relative border border-gray-200"
-											id="card"
-										>
-											<h1 className="text-lg">{elem.th_company_name}</h1>
-											<div
-												className="text-gray-500 text-sm mt-2"
-												id="card-body"
-											>
-												<p>
-													<small className="flex items-start">
-														<MapPinIcon className="mr-2" width={16} />
-														{elem.province_base}
-													</small>
-												</p>
+				<div className="w-3/4 mt-3">
+					{/* Card */}
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+						{listCompany.map((elem, index) => (
+							<Link
+								key={index}
+								href={`/company/${elem["_id"]}`}
+								target="_blank"
+							>
+								<div className="">
+									<div
+										className="bg-white shadow-md hover:shadow-lg hover:border-purple-400 rounded-md px-4 py-4 relative border border-gray-200"
+										id="card"
+									>
+										<h1 className="text-lg">{elem.th_company_name}</h1>
+										<div className="text-gray-500 text-sm mt-2" id="card-body">
+											<p>
+												<small className="flex items-start">
+													<MapPinIcon className="mr-2" width={16} />
+													{elem.province_base}
+												</small>
+											</p>
 
-												<p>
-													<small className="flex items-center">
-														<AtSymbolIcon className="mr-2" width={16} />
-														{elem.email}
-													</small>
-												</p>
-												<p>
-													<small className="flex items-center">
-														<PhoneIcon className="mr-2" width={16} />
-														{elem.phone_number}
-													</small>
-												</p>
-											</div>
+											<p>
+												<small className="flex items-center">
+													<AtSymbolIcon className="mr-2" width={16} />
+													{elem.email}
+												</small>
+											</p>
+											<p>
+												<small className="flex items-center">
+													<PhoneIcon className="mr-2" width={16} />
+													{elem.phone_number}
+												</small>
+											</p>
+										</div>
 
-											<div id="card-footer" className="mt-5">
-												<p className="mt-2">
-													<span
-														className={`${
-															classBadge[elem.cluster]
-														} text-xs font-medium mr-2 px-2.5 py-0.5 rounded `}
-													>
-														{cluster_id[elem.cluster]}
-													</span>
-												</p>
-											</div>
+										<div id="card-footer" className="mt-5">
+											<p className="mt-2">
+												<span
+													className={`${
+														classBadge[elem.cluster]
+													} text-xs font-medium mr-2 px-2.5 py-0.5 rounded `}
+												>
+													{cluster_id[elem.cluster]}
+												</span>
+											</p>
 										</div>
 									</div>
-								</Link>
-							))}
-						</div>
+								</div>
+							</Link>
+						))}
 					</div>
 				</div>
 			</div>

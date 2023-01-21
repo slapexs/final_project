@@ -59,7 +59,7 @@ const CompanyByID = ({ company }) => {
 				<link rel="icon" href="/houseparty.png" />
 			</Head>
 
-			<div className="py-24 sm:py-32 lg:py-24 flex justify-center">
+			<div className="py-20 md:py-24 flex justify-center">
 				{/* Content */}
 				<div className="w-3/4">
 					<h1 className="text-3xl font-bold">{company.th_company_name}</h1>
@@ -78,7 +78,7 @@ const CompanyByID = ({ company }) => {
 					</p>
 
 					{/* Grid col 2 columns */}
-					<div className="grid grid-cols-2 gap-4 mt-10">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
 						{/* Company detail */}
 						<div className="">
 							<p className="font-light text-gray-400">ข้อมูลบริษัท</p>

@@ -24,19 +24,21 @@ const AllCompanies = ({ companies }) => {
 				<link rel="icon" href="/houseparty.png" />
 			</Head>
 
-			<div className="py-24 sm:py-36 flex justify-center">
+			<div className="py-10 md:py-20 flex justify-center">
 				<div className="w-3/4">
-					<h1 className="text-3xl text-center">สถานประกอบการทั้งหมด</h1>
+					<h1 className="text-3xl text-center font-semibold">
+						สถานประกอบการทั้งหมด
+					</h1>
 
 					<ul>
-						<div className="mt-10 grid grid-cols-3 gap-4">
+						<div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 							{companies.map((elem, index) => (
 								<Link
 									href={`/company/${elem["_id"]}`}
 									key={index}
 									target="_blank"
 								>
-									<li className="rounded border border-gray-300 p-4 shadow-sm hover:shadow-lg hover:border-purple-800">
+									<li className="rounded border border-gray-300 p-4 shadow-sm hover:shadow-lg hover:border-purple-400">
 										{elem.th_company_name}
 										<p className="text-gray-400">
 											<small>{elem.eng_company_name}</small>

@@ -30,14 +30,14 @@ export default function ResultCompany({ cluster, companies }) {
 				<div className="flex justify-center mt-2">
 					<div className="w-3/4">
 						<ul>
-							<div className="grid grid-cols-2 gap-4">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 								{companies.map((elem, index) => (
 									<Link
 										href={`/company/${elem["_id"]}`}
 										target="_blank"
 										key={index}
 									>
-										<li className="border border-gray-300 p-2 shadow-sm flex justify-between hover:shadow-lg rounded">
+										<li className="border border-gray-300 p-2 shadow-sm flex justify-between hover:shadow-lg rounded hover:border-purple-400">
 											<div>
 												<h1>{elem.th_company_name}</h1>
 												<p className="text-gray-500 text-xs">

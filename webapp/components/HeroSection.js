@@ -22,6 +22,7 @@ export default function Searchbox() {
 	}
 
 	async function analyzeCluster() {
+		setResultClusterId(null)
 		const url = "http://13.229.79.190/search"
 		setSearching(true)
 		const res = await fetch(url, {
@@ -42,42 +43,47 @@ export default function Searchbox() {
 
 	return (
 		<>
-			<div className="py-24 sm:py-32 lg:py-24">
+			<div className="py-24">
 				<div className="mx-auto max-w-7xl px-6 lg:px-6">
 					<div className="text-center">
-						<h1 className="text-5xl font-bold">ค้นหาสถานประกอบการ</h1>
+						<h1 className="text-3xl md:text-5xl font-bold">
+							ค้นหาสถานประกอบการ
+						</h1>
 						<p className="mt-2 text-gray-600">
 							ระบุรายละเอียดความสนใจที่อยากฝึกงาน
 						</p>
 					</div>
 
-					<div className="mt-10 flex gap-x-4 items-end justify-center">
-						<textarea
-							name="search"
-							id="search"
-							className="block w-2/4 py-2 px-3 rounded-md bg-slate-50 border border-gray-400 border-1 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm disabled:bg-zinc-200"
-							placeholder="สนใจฝึกงานด้านไหน?"
-							onChange={handleKeyword}
-							disabled={searching}
-						/>
+					<div className="mt-10 flex w-full items-end justify-center">
+						<div className="flex-col text-right w-3/4">
+							<textarea
+								name="search"
+								id="search"
+								className="block w-full py-2 px-3 mb-2 rounded-md bg-slate-50 border border-gray-400 border-1 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm disabled:bg-zinc-200"
+								placeholder="สนใจฝึกงานด้านไหน?"
+								onChange={handleKeyword}
+								disabled={searching}
+								rows={4}
+							/>
 
-						<button
-							className={
-								searching
-									? "px-4 py-2 inline-block rounded-lg text-white bg-amber-400 "
-									: "px-4 py-2 inline-block rounded-lg text-white bg-amber-500 hover:bg-amber-600"
-							}
-							onClick={analyzeCluster}
-							disabled={searching}
-						>
-							{searching ? (
-								<ArrowPathIcon className="w-5 inline animate-spin" />
-							) : (
-								<MagnifyingGlassIcon className="w-5 inline" />
-							)}
+							<button
+								className={
+									searching
+										? "px-4 py-2 w-full md:w-auto rounded-lg text-white bg-purple-400"
+										: "px-4 py-2 w-full md:w-auto rounded-lg text-white bg-purple-500 hover:bg-purple-600"
+								}
+								onClick={analyzeCluster}
+								disabled={searching}
+							>
+								{searching ? (
+									<ArrowPathIcon className="w-5 inline animate-spin" />
+								) : (
+									<MagnifyingGlassIcon className="w-5 inline" />
+								)}
 
-							{searching ? "กำลังค้นหา" : "ค้นหา"}
-						</button>
+								{searching ? "กำลังค้นหา" : "ค้นหา"}
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
