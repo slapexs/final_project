@@ -7,7 +7,7 @@ import nltk
 # nltk.download('stopwords')
 from nltk.corpus import stopwords
 
-data = './data_csv/data_cleaned.csv'
+data = './file_test_accuracy/test.csv'
 df = pd.read_csv(data)
 
 th_stopword = list(thai_stopwords())
@@ -79,7 +79,7 @@ y_value = pca_vecs[:, 1]
 df_tfidf['x_value'] = x_value
 df_tfidf['y_value'] = y_value
 
-k = 8
+k = 6
 kmeans = KMeans(n_clusters=k)
 # # Fit model
 kmeans.fit(df_tfidf[['x_value', 'y_value']])
@@ -93,9 +93,9 @@ df_tfidf['cluster'] = clusters
 
 import matplotlib.pyplot as plt
 # # set image size
-# plt.figure(figsize=(10, 5))
+plt.figure(figsize=(12, 6))
 # # set a title
-plt.title("Group of companies", fontdict={"fontsize": 18})
+plt.title(f'{k} groups', fontdict={"fontsize": 18})
 # # set axes names
 plt.xlabel("X", fontdict={"fontsize": 16})
 plt.ylabel("Y", fontdict={"fontsize": 16})
