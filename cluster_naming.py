@@ -1,7 +1,7 @@
 import pandas as pd
 import random
 
-file = pd.read_csv('./document/editword_clustered_company.csv')
+file = pd.read_csv('./document/clustered_company.csv')
 
 class naming_cluster:
 
@@ -34,7 +34,17 @@ class naming_cluster:
     def len_cluster(self, companies):
         return len(companies)
 
-cluster = 7
+cluster = 6
+
+'''
+    0 = Data
+    1 = Other
+    2 = Online marketing
+    3 = Software
+    4 = Hardware
+    5 = Network
+    6 = IT
+'''
 companies = naming_cluster().appendcompany(cluster=cluster)
 sample = naming_cluster().display_samplecompany(
     list_companies=companies,
@@ -43,16 +53,5 @@ sample = naming_cluster().display_samplecompany(
     display=True
 )
 print(f'\n {naming_cluster().len_cluster(companies)}')
-
-'''
-    0 = Hardware
-    1 = AI
-    2 = Online marketing
-    3 = IT
-    4 = UX/UI design
-    5 = Other
-    6 = Data
-    7 = Software
-'''
 
 
