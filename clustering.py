@@ -8,6 +8,9 @@ import nltk
 from nltk.corpus import stopwords
 import matplotlib.pyplot as plt
 
+# Generate conmpany id
+import uuid
+
 data = './data_csv/cleaned_companies.csv'
 df = pd.read_csv(data)
 
@@ -35,6 +38,9 @@ new_column_name = [
     'note',
     'source'
 ]
+
+# Cluster name
+default_cluster_name = ["Data","Other","Online marketing","Software","Hardware","Network","IT"]
 
 # Rename columns
 df.columns = new_column_name
@@ -106,10 +112,18 @@ kmeans = KMeans(n_clusters=k, random_state=1)
 # # Fit model
 kmeans.fit(df_tfidf[['x_value', 'y_value']])
 clusters = kmeans.labels_
+cluster_name = []
 
+
+# Generate company id
+company_id = []
+for i in range(len(df_tfidf)):
+    company_id.append(str(uuid.uuid1()))
+    cluster_name.append(default_cluster_name[clusters[i]])
 '''
     Visualize the Clustering
 '''
+df_tfidf['company_id'] = company_id
 df_tfidf['cluster'] = clusters
 
 # set image size
@@ -132,5 +146,5 @@ plt.savefig(f"./screenshort/{k}_cluster.png")
     Save data
 '''
 from savedata import Savedata
-save_obj = Savedata(df, clusters.tolist())
+save_obj = Savedata(df, clusters.tolist(), company_id, cluster_name)
 save_obj.save_to_csv(path='./document', filename='clustered_company', index=False)
