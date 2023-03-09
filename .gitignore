@@ -228,6 +228,5 @@ report/image
 
 # report
 report/rewrite.*
-report/*.pdf
 report/demo
 report/~*
