@@ -30,6 +30,10 @@ count_cluster = len(clusters)
 class Search_body(BaseModel):
     keyword: str
 
+class search_filter(BaseModel):
+    sector: int
+    keyword: str
+
 # Instance FastAPI
 app = FastAPI()
 
@@ -51,11 +55,23 @@ async def rootPage():
     }
 
 # Function find company in cluster
-def findCompanyInCluster(cluster_id: str) -> list:
-    company_in_cluster = client['final_project']['companies'].find(
-        filter={'cluster': cluster_id},
-        projection=project
-    )
+def findCompanyInCluster(cluster_id: str, sector = 5) -> list:
+    north = ['กำแพงเพชร', 'เชียงราย','เชียงใหม่', 'ตาก', 'น่าน', 'พะเยา', 'พิจิตร', 'พิษณุโลก', 'เพชรบูรณ์', 'แพร่', 'แม่ฮ่องสอน', 'ลำปาง', 'ลำพูน', 'สุโขทัย', 'อุตรดิตถ์']
+    east = ['จันทบุรี', 'ฉะเชิงเทรา', 'ชลบุรี', 'ตราด', 'นครนายก', 'ปราจีนบุรี', 'พัทยา', 'ระยอง', 'สระแก้ว']
+    north_east = ['กาฬสินธุ์','ขอนแก่น','ชัยภูมิ','นครพนม','นครราชสีมา','บึงกาฬ','บุรีรัมย์','มหาสารคาม','มุกดาหาร','ยโสธร','ร้อยเอ็ด','เลย','ศรีสะเกษ','สกลนคร','สุรินทร์','หนองคาย','หนองบัวลำภู','อำนาจเจริญ','อุดรธานี','อุบลราชธานี']
+    central = ['กรุงเทพมหานคร','กาญจนบุรี','ชัยนาท','นครปฐม','นครสวรรค์','นนทบุรี','ปทุมธานี','พระนครศรีอยุธยา','ราชบุรี','ลพบุรี','สมุทรปราการ','สมุทรสงคราม','สมุทรสาคร','สระบุรี','สิงห์บุรี','สุพรรณบุรี','อ่างทอง','อุทัยธานี']
+    south = ['สุราษฎร์ธานี','ชุมพร','นครศรีธรรมราช','นราธิวาส','ประจวบคีรีขันธ์','ปัตตานี','พัทลุง','เพชรบุรี','ยะลา','สงขลา','สุราษฎร์ธานี','ประจวบคีรีขันธ์','หาดใหญ่', 'กระบี่', 'ตรัง', 'พังงา', 'ภูเก็ต', 'ระนอง', 'สตูล']
+    summary = [north, east, north_east, central, south]
+    if sector >= 5:
+        company_in_cluster = client['final_project']['companies'].find(
+            filter={'cluster': cluster_id},
+            projection=project
+        )
+    else:
+        company_in_cluster = client['final_project']['companies'].find(
+            filter={'cluster': cluster_id, 'province_base': {'$in': summary[sector]}},
+            projection=project
+        )
     return list(company_in_cluster)
 
 # Function search company filter by province
@@ -85,14 +101,14 @@ async def search_body(req: Search_body):
 
 # Response calculate cosine similarity and then response company in cluster
 @app.post('/searchcompany')
-async def searchAndResponseCompanyInCluster(request: Search_body):
-    payload = {'keyword': request.keyword}
+async def searchAndResponseCompanyInCluster(request: search_filter):
+    payload = {'keyword': request.keyword, 'sector': int(request.sector)}
     # Send data for calculate cosine similarity
     obj = Calculate_cosinesim(payload['keyword'], count_cluster, df_db)
     # Result cosine similarity values
     cosine_values = obj.response_cosine()
     # Response value
-    response_data = findCompanyInCluster(str(cosine_values.index(max(cosine_values))))
+    response_data = findCompanyInCluster(str(cosine_values.index(max(cosine_values))), payload['sector'])
     return response_data
 
 # Response get all companies from mongodb
