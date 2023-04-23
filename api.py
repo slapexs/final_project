@@ -58,6 +58,14 @@ def findCompanyInCluster(cluster_id: str) -> list:
     )
     return list(company_in_cluster)
 
+# Function search company filter by province
+def findCompanyByProvince(province: str) -> list:
+    company_in_province = client['final_project']['companies'].find(
+        filter={'province_base': province},
+        projection=project
+    )
+    return list(company_in_province)
+
 # Response Calculate cosine similarity
 @app.post('/search')
 async def search_body(req: Search_body):
@@ -97,6 +105,32 @@ async def responseAllCommpany():
 async def getCompanyByCluster(cluster: str):
     cluster_id = cluster
     return findCompanyInCluster(cluster_id)
+
+# Response get company filter ny province
+@app.get('/company/province/{province}')
+async def getCompanyByProvince(province:str):
+    province_name = province
+    return findCompanyByProvince(province_name)
+
+# Function find company filter by sector [0-4]
+def findCompanyBySector(sector):
+    north = ['กำแพงเพชร', 'เชียงราย','เชียงใหม่', 'ตาก', 'น่าน', 'พะเยา', 'พิจิตร', 'พิษณุโลก', 'เพชรบูรณ์', 'แพร่', 'แม่ฮ่องสอน', 'ลำปาง', 'ลำพูน', 'สุโขทัย', 'อุตรดิตถ์']
+    east = ['จันทบุรี', 'ฉะเชิงเทรา', 'ชลบุรี', 'ตราด', 'นครนายก', 'ปราจีนบุรี', 'พัทยา', 'ระยอง', 'สระแก้ว']
+    north_east = ['กาฬสินธุ์','ขอนแก่น','ชัยภูมิ','นครพนม','นครราชสีมา','บึงกาฬ','บุรีรัมย์','มหาสารคาม','มุกดาหาร','ยโสธร','ร้อยเอ็ด','เลย','ศรีสะเกษ','สกลนคร','สุรินทร์','หนองคาย','หนองบัวลำภู','อำนาจเจริญ','อุดรธานี','อุบลราชธานี']
+    central = ['กรุงเทพมหานคร','กาญจนบุรี','ชัยนาท','นครปฐม','นครสวรรค์','นนทบุรี','ปทุมธานี','พระนครศรีอยุธยา','ราชบุรี','ลพบุรี','สมุทรปราการ','สมุทรสงคราม','สมุทรสาคร','สระบุรี','สิงห์บุรี','สุพรรณบุรี','อ่างทอง','อุทัยธานี']
+    south = ['สุราษฎร์ธานี','ชุมพร','นครศรีธรรมราช','นราธิวาส','ประจวบคีรีขันธ์','ปัตตานี','พัทลุง','เพชรบุรี','ยะลา','สงขลา','สุราษฎร์ธานี','ประจวบคีรีขันธ์','หาดใหญ่', 'กระบี่', 'ตรัง', 'พังงา', 'ภูเก็ต', 'ระนอง', 'สตูล']
+    summary = [north, east, north_east, central, south]
+    company = client['final_project']['companies'].find(
+        filter={'province_base': {'$in': summary[sector]}},
+        projection=project
+    )
+    return list(company)
+    
+# Find company by sector
+@app.get('/company/sector/{sector}')
+async def getCompanyBySector(sector):
+    sector_index = int(sector)
+    return findCompanyBySector(sector_index)
 
 # Response list of clusters
 @app.get('/cluster')
