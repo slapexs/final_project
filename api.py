@@ -140,7 +140,11 @@ def findCompanyBySector(sector):
         filter={'province_base': {'$in': summary[sector]}},
         projection=project
     )
-    return list(company)
+    if len(list(company)) > 0:
+        return list(company)
+    else:
+        return null
+    
     
 # Find company by sector
 @app.get('/company/sector/{sector}')
